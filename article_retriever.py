@@ -3,18 +3,18 @@ from urllib.parse import urlparse
 
 from soup_methods import *
 
-bbc_url = 'https://www.bbc.co.uk'
-pink_url = 'https://www.thepinknews.com'
+_bbc_url = 'https://www.bbc.co.uk'
+_pink_url = 'https://www.thepinknews.com'
 _filter_dict = {
-    bbc_url: {'data-component': 'text-block'},
-    pink_url: {'class': 'article__content'}
+    _bbc_url: {'data-component': 'text-block'},
+    _pink_url: {'class': 'article__content'}
 }
 
 def get_articles_for_topic(topic_url):
     base_url = _get_base_url(topic_url)
-    if base_url == bbc_url:
+    if base_url == _bbc_url:
         return _get_articles_for_bbc_topic(topic_url)
-    elif base_url == pink_url:
+    elif base_url == _pink_url:
         return _get_articles_for_pink_topic(topic_url)
     else:
         print(topic_url + ' is not a supported url')
