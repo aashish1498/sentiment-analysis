@@ -12,16 +12,16 @@ _sia = SentimentIntensityAnalyzer()
 
 def get_polarity(text, method = SentimentMethod.VADER):
     if method == SentimentMethod.TEXTBLOB:
-        return get_blob_polarity(text)
+        return _get_blob_polarity(text)
     else:
-        return get_vader_polarity(text)
+        return _get_vader_polarity(text)
 
 
-def get_vader_polarity(processed_text):
+def _get_vader_polarity(processed_text):
     score = _sia.polarity_scores(processed_text)
     return score['compound']
 
-def get_blob_polarity(processed_text):
+def _get_blob_polarity(processed_text):
     blob = TextBlob(processed_text)
     polarity = blob.sentiment.polarity
     subjectivity = blob.sentiment.subjectivity
