@@ -1,12 +1,24 @@
+from enum import Enum
 from nltk.sentiment import SentimentIntensityAnalyzer
 from textblob import TextBlob
 from article_retriever import *
 from preprocessing import *
 
-sia = SentimentIntensityAnalyzer()
+class SentimentMethod(Enum):
+    TEXTBLOB = "TextBlob"
+    VADER = "Vader"
+
+_sia = SentimentIntensityAnalyzer()
+
+def get_polarity(text, method = SentimentMethod.VADER):
+    if method == SentimentMethod.TEXTBLOB:
+        return get_blob_polarity(text)
+    else:
+        return get_vader_polarity(text)
+
 
 def get_vader_polarity(processed_text):
-    score = sia.polarity_scores(processed_text)
+    score = _sia.polarity_scores(processed_text)
     return score['compound']
 
 def get_blob_polarity(processed_text):
