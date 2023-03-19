@@ -1,4 +1,5 @@
 from matplotlib import pyplot as plt
+import pandas as pd
 import seaborn as sns
 
 
@@ -12,3 +13,6 @@ def display_heatmap(list):
     ax = sns.heatmap([list], cmap='coolwarm', center=0, cbar=True, cbar_kws={'orientation': 'horizontal'})
     ax.set(xticks=[], yticks=[])
     plt.show()
+
+def create_dataframe(full_polarity_list):
+    return pd.DataFrame(full_polarity_list, columns=['header', 'polarity', 'url'])
