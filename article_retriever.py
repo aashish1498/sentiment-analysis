@@ -20,7 +20,7 @@ def get_articles_for_topic(topic_url):
         print(topic_url + ' is not a supported url')
 
 
-def get_info_from_article(article_url):
+def extract_article_info(article_url):
     filter = _get_filter(article_url)
     soup = get_soup_from_url(article_url)
     heading = get_header_from_soup(soup)
