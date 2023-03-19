@@ -7,9 +7,9 @@ from article_retriever import *
 
 
 def preprocess_text(text):
-    sentences = tokenize.sent_tokenize(text.lower())
+    sentences = generate_sentences(text)
     sentences = [preprocess_sentence(sentence) for sentence in sentences]
-    return ' '.join(sentences)
+    return '. '.join(sentences)
 
 
 def generate_sentences(text):
