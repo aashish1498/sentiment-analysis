@@ -9,7 +9,6 @@ def display_histogram(list):
 
 
 def display_heatmap(list):
-    n = int(len(list) ** 0.5)
-    my_matrix = [list[i:i+n] for i in range(0, len(list), n)]
-    sns.heatmap(my_matrix, cmap='coolwarm')
+    ax = sns.heatmap([list], cmap='coolwarm', center=0, cbar=True, cbar_kws={'orientation': 'horizontal'})
+    ax.set(xticks=[], yticks=[])
     plt.show()
