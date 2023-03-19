@@ -4,17 +4,21 @@ import pandas as pd
 import seaborn as sns
 
 
-def display_histogram(list):
-   plt.rcParams.update({'figure.figsize': (7, 5), 'figure.dpi': 100})
-   _, ax = plt.subplots()
-   _set_histogram(ax, list)
-   _set_data_table(ax, list)
-   plt.show()
+def display_histogram(sentiment_df):
+    polarities = sentiment_df['polarity']
+    plt.rcParams.update({'figure.figsize': (7, 5), 'figure.dpi': 100})
+    fig, ax = plt.subplots()
+    fig.suptitle(sentiment_df.name)
+    _set_histogram(ax, polarities)
+    _set_data_table(ax, polarities)
+    plt.show()
 
 
-def display_heatmap(list):
-    ax = sns.heatmap([list], cmap='coolwarm', center=0, cbar=True, cbar_kws={'orientation': 'horizontal'})
+def display_heatmap(sentiment_df):
+    polarities = sentiment_df['polarity']
+    ax = sns.heatmap([polarities], cmap='coolwarm', center=0, cbar=True, cbar_kws={'orientation': 'horizontal'})
     ax.set(xticks=[], yticks=[])
+    plt.title(sentiment_df.name)
     plt.show()
 
 
@@ -23,9 +27,13 @@ def create_dataframe(full_polarity_list):
 
 
 def _set_histogram(ax, list):
-    ax.hist(list, bins=50, density=False, color='#69b3a2')
+    x_values = np.arange(-1, 1.2, 0.25)
+    ax.hist(list, bins=x_values, density=False, color='#69b3a2')
     ax.set_xlabel('Polarity')
     ax.set_ylabel('Number of articles')
+    ax.grid()
+    ax.xaxis.set_ticks(x_values)
+    ax.margins(x=0)
     
 
 def _set_data_table(ax, list):
