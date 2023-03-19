@@ -1,6 +1,5 @@
 import re
 from urllib.parse import urlparse
-
 from soup_methods import *
 
 _bbc_url = 'https://www.bbc.co.uk'
