@@ -11,6 +11,7 @@ def preprocess_text(text):
     sentences = [preprocess_sentence(sentence) for sentence in sentences]
     return ' '.join(sentences)
 
+
 def generate_sentences(text):
     return tokenize.sent_tokenize(text.lower())
 

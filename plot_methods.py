@@ -1,10 +1,12 @@
 from matplotlib import pyplot as plt
 import seaborn as sns
 
+
 def display_histogram(list):
-    plt.rcParams.update({'figure.figsize':(7,5), 'figure.dpi':100})
+    plt.rcParams.update({'figure.figsize': (7, 5), 'figure.dpi': 100})
     plt.hist(list, bins=50)
-    plt.gca().set(title='Frequency Histogram', ylabel='Frequency');
+    plt.gca().set(title='Frequency Histogram', ylabel='Frequency')
+
 
 def display_heatmap(list):
     n = int(len(list) ** 0.5)
