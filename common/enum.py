@@ -11,3 +11,8 @@ class NewsSource(Enum):
     PINK = "https://www.thepinknews.com"
     VICE = "https://www.vice.com"
     INDEPENDENT = "https://www.independent.co.uk"
+
+class Topic(Enum):
+    TRANSGENDER = "transgender"
+    UKRAINE = "ukraine"
+    UPLIFTING = "uplifting"

@@ -13,8 +13,8 @@ _filter_dict = {
 }
 
 
-def get_articles_for_topic(source, topic_name):
-    topic_url = retrieve_topic_url(source.name, topic_name)
+def get_articles_for_topic(source, topic):
+    topic_url = retrieve_topic_url(source.name, topic.value)
     soup = get_soup_from_url(topic_url)
     article_components = _get_topic_components(soup, source)
     return _get_urls_from_components(article_components, source)
