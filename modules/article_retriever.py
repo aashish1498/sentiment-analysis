@@ -20,12 +20,10 @@ def get_articles_for_topic(source, topic_name):
     return _get_urls_from_components(article_components, source)
 
 
-
-def extract_article_info(article_url):
-    filter = _get_filter(article_url)
+def extract_article_info(article_url, source):
     soup = get_soup_from_url(article_url)
     heading = get_header_from_soup(soup)
-    text = get_div_text_from_soup(soup, filter)
+    text = get_div_text_from_soup(soup, _filter_dict[source])
     return [heading, text]
 
 
@@ -49,16 +47,3 @@ def _get_topic_components(soup, source):
         return soup.find_all('h2')
     elif(source == NewsSource.VICE):
         return soup.find_all('h3', class_='vice-card-hed')
-
-
-def _get_filter(url):
-    base_url = _get_base_url(url)
-    if base_url in _filter_dict:
-        return _filter_dict[base_url]
-    else:
-        print(url + ' is not a supported url')
-
-
-def _get_base_url(url):
-    parsed_uri = urlparse(url)
-    return '{uri.scheme}://{uri.netloc}'.format(uri=parsed_uri)
