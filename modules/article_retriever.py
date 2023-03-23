@@ -1,6 +1,6 @@
 import re
+from .soup_methods import *
 from urllib.parse import urlparse
-from soup_methods import *
 
 _bbc_url = 'https://www.bbc.co.uk'
 _pink_url = 'https://www.thepinknews.com'

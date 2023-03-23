@@ -1,9 +1,8 @@
 import string
-from nltk.corpus import stopwords
+from .article_retriever import *
 from nltk import tokenize
+from nltk.corpus import stopwords
 from nltk.stem import WordNetLemmatizer
-
-from article_retriever import *
 
 
 def preprocess_text(text):

@@ -1,7 +1,7 @@
-from matplotlib import pyplot as plt
 import numpy as np
 import pandas as pd
 import seaborn as sns
+from matplotlib import pyplot as plt
 
 
 def display_histogram(sentiment_df):
