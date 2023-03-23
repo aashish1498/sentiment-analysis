@@ -1,17 +1,11 @@
 import numpy as np
 from .article_retriever import *
 from .preprocessing import *
-from enum import Enum
+from common.enum import SentimentMethod
 from flair.nn import Classifier
 from flair.splitter import SegtokSentenceSplitter
 from nltk.sentiment import SentimentIntensityAnalyzer
 from textblob import TextBlob
-
-
-class SentimentMethod(Enum):
-    TEXTBLOB = "TextBlob"
-    VADER = "Vader"
-    FLAIR = "Flair"
 
 
 _sia = SentimentIntensityAnalyzer()
