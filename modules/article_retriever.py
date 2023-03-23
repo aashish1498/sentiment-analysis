@@ -21,20 +21,13 @@ def get_articles_for_topic(source, topic):
 
 
 def extract_article_info(article_url, source):
-    soup = get_soup_from_url(article_url)
-    heading = get_header_from_soup(soup)
-    text = get_div_text_from_soup(soup, _filter_dict[source])
-    return [heading, text]
-
-
-def _get_urls_from_components(article_components, source):
-    url_list = []
-    for component in article_components:
-        element_url = get_href_from_element(component)
-        if not urlparse(element_url).scheme:
-            element_url = source.value + element_url
-        url_list.append(element_url)
-    return url_list
+    try:
+        soup = get_soup_from_url(article_url)
+        heading = get_header_from_soup(soup)
+        text = get_div_text_from_soup(soup, _filter_dict[source])
+        return [heading, text]
+    except:
+        print('Could not extract article info from', article_url)
 
 
 def _get_topic_components(soup, source):
@@ -47,3 +40,19 @@ def _get_topic_components(soup, source):
         return soup.find_all('h2')
     elif(source == NewsSource.VICE):
         return soup.find_all('h3', class_='vice-card-hed')
+
+
+def _get_urls_from_components(article_components, source):
+    url_list = []
+    for component in article_components:
+        element_url = get_href_from_element(component)
+        _append_url_if_valid(url_list, element_url, source)
+    return url_list
+
+
+def _append_url_if_valid(url_list, url, source):
+    if not urlparse(url).scheme:
+        if not url.startswith('/'):
+            return
+        url = source.value + url
+    url_list.append(url)
