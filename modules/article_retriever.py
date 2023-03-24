@@ -9,7 +9,7 @@ _filter_dict = {
     NewsSource.BBC: {'data-component': 'text-block'},
     NewsSource.VICE: {'data-component': 'TextBlock'},
     NewsSource.PINK: {'class': 'article__content'},
-    NewsSource.INDEPENDENT: {}
+    NewsSource.GUARDIAN: {'class': 'dcr-n6w1lc'}
 }
 
 
@@ -36,8 +36,8 @@ def _get_topic_components(soup, source):
         return [tag for tag in li_tags if tag.find('div', {'type': 'article'})]
     elif(source == NewsSource.PINK):
         return soup.find_all('div', class_=re.compile('article-.*__container'))
-    elif(source == NewsSource.INDEPENDENT):
-        return soup.find_all('h2')
+    elif(source == NewsSource.GUARDIAN):
+        return soup.find_all('div', class_='fc-item__container')
     elif(source == NewsSource.VICE):
         return soup.find_all('h3', class_='vice-card-hed')
 

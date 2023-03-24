@@ -10,7 +10,7 @@ class NewsSource(Enum):
     BBC = "https://www.bbc.co.uk"
     PINK = "https://www.thepinknews.com"
     VICE = "https://www.vice.com"
-    INDEPENDENT = "https://www.independent.co.uk"
+    GUARDIAN = "https://www.theguardian.com"
 
 class Topic(Enum):
     TRANSGENDER = "transgender"
