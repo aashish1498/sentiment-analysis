@@ -28,6 +28,7 @@ def extract_article_info(article_url, source):
         return [heading, text]
     except:
         print('Could not extract article info from', article_url)
+        return []
 
 
 def _get_topic_components(soup, source):
