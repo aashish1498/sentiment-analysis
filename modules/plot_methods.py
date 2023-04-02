@@ -2,6 +2,7 @@ import numpy as np
 import pandas as pd
 import seaborn as sns
 from matplotlib import pyplot as plt
+from matplotlib.colors import LinearSegmentedColormap
 
 
 def display_histogram(sentiment_df):
@@ -16,7 +17,8 @@ def display_histogram(sentiment_df):
 
 def display_heatmap(sentiment_df):
     polarities = sentiment_df['polarity']
-    ax = sns.heatmap([polarities], cmap='coolwarm', center=0, cbar=True, cbar_kws={'orientation': 'horizontal'})
+    cmap=LinearSegmentedColormap.from_list('rg',["r", "w", "g"], N=256) 
+    ax = sns.heatmap([polarities], cmap=cmap, center=0, cbar=True, cbar_kws={'orientation': 'horizontal'})
     ax.set(xticks=[], yticks=[])
     plt.title(sentiment_df.name)
     plt.show()
