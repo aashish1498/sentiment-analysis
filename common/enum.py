@@ -16,3 +16,4 @@ class Topic(Enum):
     TRANSGENDER = "transgender"
     UKRAINE = "ukraine"
     UPLIFTING = "uplifting"
+    DISASTER = "disaster"
