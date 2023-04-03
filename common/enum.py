@@ -17,3 +17,11 @@ class Topic(Enum):
     UKRAINE = "ukraine"
     UPLIFTING = "uplifting"
     DISASTER = "disaster"
+
+class TextType(Enum):
+    POSITIVE = "positive"
+    NEGATIVE = "negative"
+    
+class TextSource(Enum):
+    ARTICLES = "articles"
+    REVIEWS = "reviews"
