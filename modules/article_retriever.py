@@ -13,9 +13,9 @@ _filter_dict = {
 }
 
 
-def get_articles_for_topic(source, topic):
+def get_articles_for_topic(source, topic, suffix=''):
     topic_url = retrieve_topic_url(source.name, topic.value)
-    soup = get_soup_from_url(topic_url)
+    soup = get_soup_from_url(topic_url + suffix)
     article_components = _get_topic_components(soup, source)
     return _get_urls_from_components(article_components, source)
 
