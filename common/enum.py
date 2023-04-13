@@ -17,6 +17,7 @@ class Topic(Enum):
     UKRAINE = "ukraine"
     UPLIFTING = "uplifting"
     DISASTER = "disaster"
+    LGBTQ = "lgbtq"
 
 class TextType(Enum):
     POSITIVE = "positive"
